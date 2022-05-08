@@ -98,7 +98,7 @@ class WebViewRunner {
 
       await _web!.run();
       _web!.webViewController.loadUrl(
-          urlRequest: URLRequest(url: Uri.parse("https://localhost:8080/")));
+          urlRequest: URLRequest(url: Uri.parse("https://localhost:8082/")));
     } else {
       _webViewReloadTimer = Timer.periodic(Duration(seconds: 3), (timer) {
         _tryReload();
@@ -126,7 +126,8 @@ class WebViewRunner {
       ..useCertificateChainBytes(cert.buffer.asInt8List())
       ..usePrivateKeyBytes(keys.buffer.asInt8List());
     // Serves the API at localhost:8080 by default
-    final server = Jaguar(securityContext: security);
+    final server =
+        Jaguar(securityContext: security, port: 8082, multiThread: true);
     server.addRoute(serveFlutterAssets());
     await server.serve(logRequests: false);
   }

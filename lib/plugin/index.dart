@@ -12,6 +12,7 @@ import 'package:polkawallet_sdk/service/webViewRunner.dart';
 import 'package:polkawallet_sdk/storage/keyring.dart';
 import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
 import 'package:polkawallet_sdk/utils/app.dart';
+import 'package:flutter_boost/flutter_boost.dart';
 
 const String sdk_cache_key = 'polka_wallet_sdk_cache';
 const String net_state_cache_key = 'network_state';
@@ -207,8 +208,8 @@ abstract class PolkawalletPluginBase {
   List<HomeNavItem> getNavItems(BuildContext context, Keyring keyring) => [];
 
   /// App will add plugin's pages with custom [routes].
-  Map<String, WidgetBuilder> getRoutes(Keyring keyring) =>
-      Map<String, WidgetBuilder>();
+  Map<String, FlutterBoostRouteFactory> getRoutes(Keyring keyring) =>
+      Map<String, FlutterBoostRouteFactory>();
 
   /// App will inject plugin's [jsCode] into webview to connect.
   Future<String>? loadJSCode() => null;
