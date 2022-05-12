@@ -164,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 if (!widget.sdkReady) return;
                 Navigator.of(context).pushNamed(DAppPage.route,
-                    arguments: "https://apps.acala.network/#/loan");
+                    arguments: {'params': "https://apps.acala.network/#/loan"});
               },
             ),
             Divider(),

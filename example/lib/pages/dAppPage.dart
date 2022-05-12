@@ -21,7 +21,13 @@ class _DAppPageState extends State<DAppPage> {
 
   @override
   Widget build(BuildContext context) {
-    final String url = ModalRoute.of(context).settings.arguments;
+    Map map = ModalRoute.of(context).settings.arguments;
+    String str = null;
+    if (map != null) {
+      final Map<String, dynamic> arguments = Map<String, dynamic>.from(map);
+      str = arguments["params"];
+    }
+    final String url = str;
     return Scaffold(
       appBar: AppBar(
           title: Text(
